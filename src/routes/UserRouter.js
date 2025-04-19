@@ -13,4 +13,4 @@ router.get('/get-details/:id',authUserMiddleWare, userController.getDetailsUser)
 router.post('/refresh-token', userController.refreshToken)
 
 
-module.exports = router
+module.exports = router 
