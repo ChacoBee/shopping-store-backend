@@ -83,6 +83,24 @@
         }
     }
 
+    const deleteManyProduct = async (req, res) => {
+        try{
+            const ids = req.body.ids
+            if(!ids){
+                return res.status(200).json({
+                    status: 'ERR',
+                    message: 'The ids is required'
+                })
+            }
+            const response = await ProductService.deleteManyProduct(ids)
+            return res.status(200).json(response)
+        }catch(e){
+            return res.status(404).json({
+                message: e
+            })
+        }
+    }
+
     const getAllProduct = async (req, res) => {
         try{
             const { limit, page, sortBy, order, filter} = req.query;
@@ -106,5 +124,6 @@
         updateProduct,
         getDetailProduct,
         deleteProduct,
-        getAllProduct
+        getAllProduct,
+        deleteManyProduct
     }
